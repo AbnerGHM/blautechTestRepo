@@ -1,14 +1,13 @@
 package com.test.blautech.app.controller;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.test.blautech.app.model.Usuario;
 import com.test.blautech.app.service.IUsuarioService;
 
 @Controller
@@ -23,11 +22,23 @@ public class InformacionController {
 
 	}
 	
-	@RequestMapping(value = "/informacion/{id}")
-	public String recuperarInformacionUsuario(@PathParam(value = "id") Long id, RedirectAttributes flash) {
+	@RequestMapping(value = "/actualizar/{id}", params = { "save" })
+	public String recuperarInformacionUsuario(@PathVariable(value = "id") Long id, @ModelAttribute("usuario") Usuario usuario) {
 	
-		flash.addAttribute("usuario", usuarioService.findOne(id));
-	return "redirect:/informacion";
+
+		usuarioService.save(usuario);
+		
+		
+	return "redirect:/index";
 
 	}
+	@RequestMapping(value = "/crear", params = { "create" } )
+	public String crearUsuario(@ModelAttribute("usuario") Usuario usuario) {
+		
+		usuarioService.save(usuario);
+	return "redirect:/index";
+
+	}
+	
+	
 }

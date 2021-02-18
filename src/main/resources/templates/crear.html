@@ -9,7 +9,7 @@
 
 	<div class="container" style="padding-top: 150px;">
 		<form class="needs-validation"
-			th:action="@{/actualizar/} + ${usuario.id}" th:object="${usuario}"
+			th:action="@{/crear/}" th:object="${usuario}"
 			method="post" novalidate>
 			<div class="form-group">
 				<label for="nickname">Nombre de usuario</label> <input
@@ -26,7 +26,7 @@
 					type="email" class="form-control" id="email"
 					placeholder="Ingrese nuevo email">
 			</div>
-			<button type="submit" class="btn btn-primary" name="save" id="save">Actualizar</button>
+			<button type="submit" class="btn btn-primary" name="create" id="create">Crear</button>
 
 		</form>
 	</div>

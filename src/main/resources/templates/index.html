@@ -9,6 +9,9 @@
 	<div class="container">
 		<h1 th:text="${titulo}"
 			class="text-center"></h1>
+			<a th:href="@{/crear}"
+						class="btn btn-success btn-xs float-right" style="color: white;"
+						th:text="'Crear Usuario'"></a>
 		<table class="table table-striped ">
 			<thead>
 				<tr>
@@ -23,11 +26,7 @@
 			<tbody>
 				<tr th:each="usuario : ${usuarios}">
 					<td th:text="${usuario.nickname}" class="align-middle text-center"></td>
-					<td ><a th:href="@{/informacion/}+${usuario.id}"
-						class="btn btn-info btn-xs float-right" style="color: white;"
-						th:text="'Informacion'" ></a>
-						</td>
-					<td ><a th:href="@{/form/}  + ${usuario.id}"
+					<td ><a th:href="@{/actualizar/}  + ${usuario.id}"
 						class="btn btn-success btn-xs float-right" style="color: white;"
 						th:text="'Editar'"></a></td>
 						<td ><a th:href="@{/eliminar/}  + ${usuario.id}"
