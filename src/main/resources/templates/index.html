@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="${titulo}"></title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
+<body>
+	<div class="container">
+		<h1 th:text="${titulo}"
+			class="text-center"></h1>
+		<table class="table table-striped ">
+			<thead>
+				<tr>
+					<th style="width: 30%"></th>
+						<th scope="col"></th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+					
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="usuario : ${usuarios}">
+					<td th:text="${usuario.nickname}" class="align-middle text-center"></td>
+					<td ><a th:href="@{/informacion/}+${usuario.id}"
+						class="btn btn-info btn-xs float-right" style="color: white;"
+						th:text="'Informacion'" ></a>
+						</td>
+					<td ><a th:href="@{/form/}  + ${usuario.id}"
+						class="btn btn-success btn-xs float-right" style="color: white;"
+						th:text="'Editar'"></a></td>
+						<td ><a th:href="@{/eliminar/}  + ${usuario.id}"
+						class="btn btn-danger btn-xs float-right" style="color: white;"
+						th:text="'Eliminar'" onclick="return confirm('¿Estas seguro que deseas eliminar?');"></a></td>
+				
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</body>
+</html>
