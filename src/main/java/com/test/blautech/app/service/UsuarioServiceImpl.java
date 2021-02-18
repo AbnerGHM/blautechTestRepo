@@ -24,8 +24,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	}
 	
 	public Usuario findOne(Long id) {
-		
-	return usuarioDao.findById(id).get();
+		try {
+		return	usuarioDao.findById(id).get();
+		} catch (Exception e) {
+			return null;		}
+
 	}
 
 	@Override
